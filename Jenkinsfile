@@ -8,10 +8,10 @@ pipeline
     agent any
     stages{
 
-         stage ('Build and Docker Image') {
+         stage ('Build and Deploy Docker Image') {
                   steps {
                         script {
-                            dockerImage = docker.build registry
+                            dockerImage = docker.build registry + ":latest"
                                docker.withRegistry( '', registryCredential )
                                {
                                         dockerImage.push()
@@ -20,6 +20,13 @@ pipeline
                         }
                   }
                   }
+
+                 stage('Deploy to local kubernete cluster') {
+                                    steps{
+                                      sh "kubectl apply -f KuberneteDeployment.yaml"
+                                      sh "kubectl apply -f KuberneteService.yaml"
+                                    }
+                                  }
 
 }
 }
