@@ -11,7 +11,7 @@ pipeline
          stage ('Build and Deploy Docker Image') {
                   steps {
                         script {
-                            dockerImage = docker.build registry
+                            dockerImage = docker.build registry + ":latest"
                                docker.withRegistry( '', registryCredential )
                                {
                                         dockerImage.push()
