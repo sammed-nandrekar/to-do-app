@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: todoapp
-          image: sammednandrekar/to-do-app:latest
+          image: sammednandrekar/to-do-app
           ports:
             - containerPort: 3000
