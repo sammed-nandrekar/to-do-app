@@ -8,14 +8,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: todoapp-container
+      app: todoapp
   template:
     metadata:
       labels:
-        app: todoapp-container
+        app: todoapp
     spec:
       containers:
-        - name: todoapp-container
+        - name: todoapp
           image: sammednandrekar/to-do-app:latest
           ports:
             - containerPort: 3000
